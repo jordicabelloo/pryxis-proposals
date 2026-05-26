@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta PRYXIS para Test Coach</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pryxis-bg: #0A0A0A;
+            --pryxis-accent: #F0C040;
+            --pryxis-text-primary: #FFFFFF;
+            --pryxis-text-secondary: #AAAAAA;
+            --pryxis-card-bg: #1A1A1A;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--pryxis-bg);
+            color: var(--pryxis-text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 20px;
+            opacity: 0; /* For fade-in animation */
+            animation: fadeIn 1s forwards ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section {
+            padding: 40px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            animation: fadeIn 1s forwards ease-out;
+        }
+        
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.4s; }
+        .section:nth-child(4) { animation-delay: 0.6s; }
+        .section:nth-child(5) { animation-delay: 0.8s; }
+        .section:nth-child(6) { animation-delay: 1.0s; }
+
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--pryxis-text-primary);
+            margin-top: 0;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--pryxis-accent);
+            padding-left: 15px;
+            font-weight: 600;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        p {
+            color: var(--pryxis-text-secondary);
+            margin-bottom: 1em;
+        }
+
+        a {
+            color: var(--pryxis-accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .header {
+            text-align: center;
+            padding: 60px 0;
+            background-color: var(--pryxis-bg);
+        }
+
+        .logo {
+            font-size: 3em;
+            font-weight: 700;
+            color: var(--pryxis-accent);
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .logo span {
+            color: var(--pryxis-text-primary);
+            font-weight: 300;
+        }
+
+        .headline {
+            font-size: 2.2em;
+            color: var(--pryxis-text-primary);
+            font-weight: 700;
+            margin-top: 20px;
+        }
+
+        .pain-points-grid, .solutions-grid, .how-it-works-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .pain-points-grid {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        .pain-point-card, .solution-card, .step-card {
+            background-color: var(--pryxis-card-bg);
+            padding: 25px;
+            border-radius: 8px;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .pain-point-card:hover, .solution-card:hover, .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .pain-point-card .icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            display: block;
+            text-align: center;
+        }
+
+        .pain-point-card h3, .solution-card h3, .step-card h3 {
+            color: var(--pryxis-accent);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .solution-card h3 {
+             color: var(--pryxis-text-primary);
+        }
+
+        .solution-card .impact {
+            color: var(--pryxis-accent);
+            font-weight: 600;
+            margin-top: 15px;
+            display: block;
+        }
+
+        .step-card h3 {
+            color: var(--pryxis-accent);
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        
+        .step-card p {
+            font-size: 0.95em;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .cta-button {
+            display: block;
+            padding: 18px 25px;
+            background-color: var(--pryxis-accent);
+            color: var(--pryxis-bg); /* Dark text on accent button */
+            text-align: center;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 1.1em;
+            transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+        }
+
+        .cta-button:hover {
+            background-color: #e6b23a; /* Slightly darker accent on hover */
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-secondary {
+            color: var(--pryxis-text-secondary);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 2.2em;
+            }
+            .headline {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            .logo {
+                font-size: 2.5em;
+            }
+            .pain-points-grid, .solutions-grid, .how-it-works-grid {
+                grid-template-columns: 1fr;
+            }
+            .cta-button {
+                font-size: 1em;
+                padding: 15px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            .headline {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1.6em;
+            }
+            .logo {
+                font-size: 2em;
+            }
+            .section {
+                padding: 30px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 1. Header -->
+        <header class="header section">
+            <span class="logo">PRY<span>XIS</span></span>
+            <h1 class="headline">Escala el impacto de Test Coach: Tu negocio de productividad, <span style="color:var(--pryxis-accent);">100% automatizado</span> con agentes IA.</h1>
+        </header>
+
+        <!-- 2. "Analizamos tu negocio" -->
+        <section class="section">
+            <h2>Analizamos tu Negocio</h2>
+            <p>Hemos observado tu activa presencia en Instagram (@testcoach) con <strong>12.4K seguidores</strong> y tu valioso contenido sobre gestión del tiempo y productividad para emprendedores. Vendes cursos online que realmente transforman, publicando 3 veces por semana y manteniendo una tienda online.</p>
+            <p>Está claro que has construido una base sólida y una comunidad comprometida. Sin embargo, sabemos que escalar un negocio digital tan personal requiere más que solo contenido de calidad.</p>
+        </section>
+
+        <!-- 3. "Lo que te está frenando" -->
+        <section class="section">
+            <h2>Lo que te está frenando</h2>
+            <p class="text-secondary">Identificamos los cuellos de botella que limitan el crecimiento y consumen tu tiempo más valioso.</p>
+            <div class="pain-points-grid">
+                <div class="pain-point-card">
+                    <span class="icon">💬</span>
+                    <h3>DMs manuales</h3>
+                    <p class="text-secondary">Responder a cada mensaje directo de potenciales alumnos es una tarea repetitiva y consume una cantidad ingente de tu tiempo. ¿Cuántas oportunidades se diluyen por la lentitud?</p>
+                </div>
+                <div class="pain-point-card">
+                    <span class="icon"> onboarding</span>
+                    <h3>Onboarding ineficiente</h3>
+                    <p class="text-secondary">Cada nuevo alumno requiere un proceso manual de bienvenida, accesos y primeros pasos. Esto no solo tarda horas, sino que puede generar fricción inicial y saturar tu agenda.</p>
+                </div>
+                <div class="pain-point-card">
+                    <span class="icon">🕵️</span>
+                    <h3>Leads olvidados</h3>
+                    <p class="text-secondary">No tienes un sistema proactivo para recuperar a esos leads interesados que no finalizaron la compra. Esto significa dejar dinero sobre la mesa y perder alumnos potenciales.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. "Lo que haríamos por ti" -->
+        <section class="section">
+            <h2>Lo que haríamos por ti</h2>
+            <p class="text-secondary">Implementaremos agentes de IA inteligentes para gestionar tus departamentos clave, permitiéndote delegar al 100% y enfocarte en lo que mejor sabes hacer: crear contenido y transformar vidas.</p>
+            <div class="solutions-grid">
+                <div class="solution-card">
+                    <h3>Agente de Captación (DMs)</h3>
+                    <p>Un agente IA que responde y cualifica automáticamente todos los DMs de potenciales clientes en Instagram. Interactúa de forma natural, resuelve dudas comunes y agenda llamadas de venta cualificadas directamente en tu calendario.</p>
+                    <span class="impact">Impacto: <strong>Aumento de leads cualificados</strong> y <strong>ahorro de horas</strong> en gestión de DMs.</span>
+                </div>
+                <div class="solution-card">
+                    <h3>Agente de Onboarding Automático</h3>
+                    <p>Automatizamos por completo el proceso de bienvenida de nuevos alumnos. Desde el envío de accesos a la plataforma hasta la guía de los primeros pasos, todo sin intervención manual. Asegura una experiencia impecable y consistente.</p>
+                    <span class="impact">Impacto: <strong>Onboarding instantáneo y perfecto</strong>, liberando <strong>horas de trabajo manual</strong>.</span>
+                </div>
+                <div class="solution-card">
+                    <h3>Agente de Recuperación de Leads</h3>
+                    <p>Un agente IA que identifica y da seguimiento personalizado a los leads que mostraron interés pero no compraron. Envía mensajes estratégicos, resuelve objeciones y los re-engancha con tu oferta, sin que tengas que levantar un dedo.</p>
+                    <span class="impact">Impacto: <strong>Recuperación de ventas perdidas</strong> y <strong>maximización de cada lead</strong>.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. "Así funciona" -->
+        <section class="section">
+            <h2>Así funciona</h2>
+            <p class="text-secondary text-center">Nuestro proceso es simple, directo y diseñado para ofrecerte resultados concretos sin complicaciones.</p>
+            <div class="how-it-works-grid">
+                <div class="step-card">
+                    <h3>1. Análisis Estratégico</h3>
+                    <p class="text-secondary">Comprendemos a fondo tu negocio, tus procesos actuales y tus objetivos específicos. Diseñamos la estrategia de IA que mejor se adapta a Test Coach.</p>
+                </div>
+                <div class="step-card">
+                    <h3>2. Implementación de Agentes</h3>
+                    <p class="text-secondary">Configuramos y entrenamos a tus agentes de IA personalizados. Integran tus sistemas existentes y aprenden los matices de tu marca para actuar como extensiones de tu equipo.</p>
+                </div>
+                <div class="step-card">
+                    <h3>3. Delega y Escala</h3>
+                    <p class="text-secondary">Una vez operativos, tus agentes se encargan del departamento. Supervisamos su rendimiento y optimizamos continuamente, mientras tú recuperas tiempo y ves crecer tu negocio.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. CTA -->
+        <section class="section text-center">
+            <h2>El momento de escalar es ahora</h2>
+            <p class="text-secondary">Deja de gastar tu energía en tareas repetitivas. Delega departamentos enteros a nuestros agentes IA y <span style="color:var(--pryxis-accent); font-weight:600;">libera tu potencial</span> como Test Coach.</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/34600000000" target="_blank" class="cta-button">Conversemos por WhatsApp</a>
+                <a href="mailto:hola@pryxis.com" class="cta-button">Envíanos un Email</a>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
