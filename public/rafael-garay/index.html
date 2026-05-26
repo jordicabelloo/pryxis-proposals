@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRYXIS Proposal for Rafael Garay</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pryxis-bg: #0A0A0A;
+            --pryxis-accent: #F0C040;
+            --pryxis-text-main: #FFFFFF;
+            --pryxis-text-secondary: #888;
+        }
+
+        /* Basic Reset & Body Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--pryxis-bg);
+            color: var(--pryxis-text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 1em;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            line-height: 1.2;
+            color: var(--pryxis-text-main);
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: var(--pryxis-text-main);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 2.5em;
+        }
+
+        h3 {
+            font-size: 1.3em;
+            color: var(--pryxis-text-main);
+            margin-bottom: 0.5em;
+        }
+
+        p {
+            font-size: 1em;
+            margin-bottom: 1em;
+            color: var(--pryxis-text-secondary);
+        }
+
+        strong {
+            color: var(--pryxis-text-main);
+        }
+
+        .accent-text {
+            color: var(--pryxis-accent);
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            font-size: 3em;
+            font-weight: 700;
+            color: var(--pryxis-accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .header-headline {
+            font-size: 2em;
+            font-weight: 600;
+            color: var(--pryxis-text-main);
+            margin-top: 0;
+            line-height: 1.3;
+        }
+
+        /* Sections */
+        section {
+            padding: 30px 0;
+            margin-bottom: 30px;
+        }
+
+        .section-intro p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: var(--pryxis-text-main);
+            text-align: center;
+        }
+
+        /* Pain Points / What's holding you back */
+        .pain-points-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .pain-point-card {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 25px;
+            flex: 1 1 calc(50% - 20px); /* 2 cards per row on larger screens */
+            box-sizing: border-box;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            transition: transform 0.3s ease;
+            min-width: 280px; /* Ensure cards don't get too small */
+        }
+
+        .pain-point-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pain-point-card .icon {
+            font-size: 2em;
+            line-height: 1;
+            color: var(--pryxis-accent);
+        }
+
+        .pain-point-card .content h3 {
+            margin-top: 0;
+            color: var(--pryxis-accent);
+        }
+
+        .pain-point-card .content p {
+            color: var(--pryxis-text-secondary);
+            font-size: 0.9em;
+            margin-bottom: 0;
+        }
+
+        /* Automations / What we'd do for you */
+        .automation-item {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+
+        .automation-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .automation-item h3 {
+            color: var(--pryxis-accent);
+            margin-bottom: 10px;
+        }
+
+        .automation-item p {
+            color: var(--pryxis-text-secondary);
+            margin-bottom: 0.5em;
+        }
+
+        .automation-item .impact {
+            font-weight: 600;
+            color: var(--pryxis-text-main);
+            margin-top: 10px;
+            font-size: 0.95em;
+        }
+
+        /* How it works */
+        .how-it-works-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .how-it-works-step {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .how-it-works-step:hover {
+            transform: translateY(-5px);
+        }
+
+        .how-it-works-step span {
+            display: block;
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--pryxis-accent);
+            margin-bottom: 10px;
+        }
+
+        .how-it-works-step h3 {
+            color: var(--pryxis-text-main);
+            margin-bottom: 10px;
+        }
+
+        .how-it-works-step p {
+            color: var(--pryxis-text-secondary);
+            margin-bottom: 0;
+        }
+
+        /* CTA */
+        .cta-section {
+            text-align: center;
+            padding: 40px 0;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+
+        .cta-section h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: var(--pryxis-accent);
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .cta-button {
+            display: block;
+            padding: 15px 25px;
+            background-color: var(--pryxis-accent);
+            color: var(--pryxis-bg);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #e0b030; /* Slightly darker accent */
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 600px) {
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.5em; }
+            .header-headline { font-size: 1.5em; }
+            .logo { font-size: 2.5em; }
+            .pain-point-card {
+                flex: 1 1 100%; /* 1 card per row on small screens */
+            }
+            .automation-item {
+                padding: 20px;
+            }
+            .how-it-works-step {
+                padding: 20px;
+            }
+            .cta-buttons {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <span class="logo">PRYXIS</span>
+            <h1 class="header-headline">Rafael, scale your world-class coaching empire with AI.</h1>
+        </header>
+
+        <section class="section-intro">
+            <h2>We analyzed your business</h2>
+            <p>Rafael, we've observed your consistent, high-value presence on Instagram, your 7,634 engaged followers, and your active funnel for world-class coaching programs. You've built a solid foundation. You share powerful educational content focused on business and discipline, actively use highlights for testimonials and motivation, and direct prospects to an external overview page. This indicates a clear demand for your expertise.</p>
+            <p>You're ready for the next level: total operational automation.</p>
+        </section>
+
+        <section>
+            <h2>What's holding you back</h2>
+            <div class="pain-points-grid">
+                <div class="pain-point-card">
+                    <span class="icon">⏳</span>
+                    <div class="content">
+                        <h3>Content Production Burnout</h3>
+                        <p>Time-consuming content creation and manual repurposing across platforms drains your energy, preventing you from focusing on core coaching.</p>
+                    </div>
+                </div>
+                <div class="pain-point-card">
+                    <span class="icon">🔍</span>
+                    <div class="content">
+                        <h3>Manual Lead Qualification</h3>
+                        <p>Manually sifting through Instagram DMs and comments to qualify leads and schedule calls is inefficient and limits your sales capacity.</p>
+                    </div>
+                </div>
+                <div class="pain-point-card">
+                    <span class="icon">📝</span>
+                    <div class="content">
+                        <h3>Inefficient Onboarding</h3>
+                        <p>Client onboarding and management processes are manual, creating friction and consuming valuable time that could be spent coaching.</p>
+                    </div>
+                </div>
+                <div class="pain-point-card">
+                    <span class="icon">📞</span>
+                    <div class="content">
+                        <h3>Limited Outreach & Follow-up</h3>
+                        <p>Lack of automated, personalized outreach means missed opportunities to nurture leads and scale your sales efforts effectively.</p>
+                    </div>
+                </div>
+                <div class="pain-point-card">
+                    <span class="icon">📚</span>
+                    <div class="content">
+                        <h3>Manual Program Support</h3>
+                        <p>Managing and delivering coaching program content and answering FAQs manually limits your ability to scale and retain client focus.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>What we'd do for you</h2>
+            <div class="automations-list">
+                <div class="automation-item">
+                    <h3>AI Content Amplifier</h3>
+                    <p>AI-powered agents transform your video transcripts into blog posts, email newsletters, and tailored social media captions for all platforms.</p>
+                    <p class="impact"><strong>Impact:</strong> Maximize reach, save hours weekly, maintain a consistent presence without lifting a finger.</p>
+                </div>
+                <div class="automation-item">
+                    <h3>Intelligent Lead Qualifier</h3>
+                    <p>Automated agent for Instagram DMs and comments. It qualifies prospects, answers common questions, and directs interested individuals directly to your booking calendar based on their specific needs.</p>
+                    <p class="impact"><strong>Impact:</strong> Filter serious leads, fill your calendar automatically, never miss a potential client.</p>
+                </div>
+                <div class="automation-item">
+                    <h3>Seamless Client Onboarding AI</h3>
+                    <p>An AI-driven workflow that sends welcome emails, delivers instant access to resources, manages contract signing, and schedules initial calls—all autonomously.</p>
+                    <p class="impact"><strong>Impact:</strong> Deliver a professional, instant onboarding experience; drastically reduce admin time; boost client satisfaction from day one.</p>
+                </div>
+                <div class="automation-item">
+                    <h3>Personalized Nurturing Agents</h3>
+                    <p>Follow-up agents that nurture leads through email or SMS. They provide relevant content and prompt next steps based on individual engagement, ensuring no lead goes cold.</p>
+                    <p class="impact"><strong>Impact:</strong> Boost conversion rates, warm up prospects effectively, build trust at scale.</p>
+                </div>
+                <div class="automation-item">
+                    <h3>AI Coaching Assistant</h3>
+                    <p>An AI assistant integrated into your coaching program. It answers frequently asked questions about course material, provides quick support, and guides members autonomously.</p>
+                    <p class="impact"><strong>Impact:</strong> Enhance client experience, scale support infinitely, free your time for high-value interactions and coaching.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>How it works</h2>
+            <div class="how-it-works-grid">
+                <div class="how-it-works-step">
+                    <span>1</span>
+                    <h3>Analysis</h3>
+                    <p>We deeply integrate with your current systems, understand your unique workflows, and pinpoint every inefficiency. This isn't generic; it's a blueprint for your specific operational mastery.</p>
+                </div>
+                <div class="how-it-works-step">
+                    <span>2</span>
+                    <h3>Implementation</h3>
+                    <p>Our team designs, builds, and deploys custom AI agents tailored to your business. We handle every technical detail, ensuring seamless integration and immediate impact.</p>
+                </div>
+                <div class="how-it-works-step">
+                    <span>3</span>
+                    <h3>You Delegate</h3>
+                    <p>Your new AI workforce autonomously handles the repetitive, time-consuming tasks. You gain back countless hours, allowing you to focus purely on strategic growth and delivering world-class coaching.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Let's talk</h2>
+            <p>Ready to automate your operations and scale your coaching business effortlessly?</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/34600000000" target="_blank" class="cta-button">Connect on WhatsApp</a>
+                <a href="mailto:hola@pryxis.com" class="cta-button">Email Us Directly</a>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
